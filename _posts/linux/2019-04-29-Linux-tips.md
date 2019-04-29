@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-categories: paracraft
+categories: linux
 ---
 
 ## Empty diary template
