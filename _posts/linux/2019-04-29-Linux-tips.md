@@ -1,9 +1,14 @@
 ---
 layout: post
-comments: true
+#comments: true
 categories: linux
 ---
 
-## Empty diary template
+## Ubuntu Tips
+On ubuntu 18.04, to disable GUI on boot, run:
 
-Empty post template
+	sudo systemctl set-default multi-user.target
+
+To enable GUI again issue the command:
+
+	sudo systemctl set-default graphical.target
