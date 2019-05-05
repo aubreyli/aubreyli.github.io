@@ -13,6 +13,8 @@ To enable GUI again issue the command:
 
 	sudo systemctl set-default graphical.target
 
+---
+
 ## Fix up GRUB install.
 Press C for the Grub command line, which will drop you back to a prompt:
 Now, enter these commands in sequence:
