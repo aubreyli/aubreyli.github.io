@@ -33,3 +33,8 @@ Then, tell grub to finish setting itself up properly against the drive on your P
 	sudo grub-install /dev/<yourDisk>
 
 	sudo grub-update
+
+## Add an account
+Create a new user with home folder and bash
+
+	sudo useradd --create-home --user-group --shell /bin/bash <username>
