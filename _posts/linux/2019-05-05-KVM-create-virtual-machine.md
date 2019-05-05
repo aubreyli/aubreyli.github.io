@@ -19,6 +19,8 @@ Install GuestOS and create Virtual Machine. Install GuestOS Ubuntu 18.04 on text
 	--location=https://mirrors.aliyun.com/ubuntu/ubuntu/dists/bionic/main/installer-amd64/ \
 	--extra-args 'console=ttyS0,115200n8 serial'
 
+### Connect serial console
+
 after finishing installation, back to KVM host and shutdown the guest like follows
 
 	root@aubrey-skl:/home/aubrey# virsh shutdown aubrey-kvm1
@@ -35,9 +37,15 @@ start guest again, if it's possible to connect to the guest's console, it's OK a
 	Ubuntu 18.04 LTS ubuntu ttyS0
 	alkvm-ubuntu1 login:
 
+---
+
+## Clone the virtual machine
+
 It's easy to create another VM to copy from current VM with a command below:
 
 	root@aubrey-skl:/home/aubrey# virt-clone --original aubrey-kvm1 --name aubrey-kvm2 --file ubuntu1804_2.img
+
+### Change MAC address
 
 The cloned machine has the same mac address, which needs to be modified
 
@@ -45,6 +53,7 @@ The cloned machine has the same mac address, which needs to be modified
 	<mac address='52:54:00:95:32:69'/>
 	root@aubrey-skl:/home/aubrey# vi /etc/libvirt/qemu/aubrey-kvm2.xml
 
+### Change IP address
 Then edit the network, to change the IP address
 
 	virsh  net-list
