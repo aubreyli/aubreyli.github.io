@@ -27,7 +27,7 @@ after finishing installation, back to KVM host and shutdown the guest like follo
 
 mount guest's disk and enable a service like follows
 
-	root@aubrey-skl:/home/aubrey# guestmount -d ubuntu1804 -i /mnt 
+	root@aubrey-skl:/home/aubrey# guestmount -d aubrey-kvm1 -i /mnt 
 	root@aubrey-skl:/home/aubrey# ln -s /mnt/lib/systemd/system/getty@.service /mnt/etc/systemd/system/getty.target.wants/getty@ttyS0.service 
 	root@aubrey-skl:/home/aubrey# umount /mnt
 
