@@ -74,3 +74,52 @@ categories: kernel
 		 */	
 	        balance_callback(rq);
 	}
+
+## pick_next_task() picks up the highest-prio task
+
+	static inline struct task_struct *
+	pick_next_task(struct rq *rq, struct task_struct *prev, struct rq_flags *rf)
+	{
+		/*
+		 * Previous task is idle or fair, call fair pick_next_task directly
+		 */
+	        if (likely((prev->sched_class == &idle_sched_class ||
+	                    prev->sched_class == &fair_sched_class) &&
+			   /*
+			    * all tasks are in the fair class
+			    */
+	                   rq->nr_running == rq->cfs.h_nr_running)) {
+	
+	                p = pick_next_task_fair(rq, prev, rf);
+			/*
+			 * RETRY_TASK indicates higher priority task appears
+			 */
+	                if (unlikely(p == RETRY_TASK))
+	                        goto restart;
+	
+	                /* Assumes fair_sched_class->next == idle_sched_class */
+	                if (!p) {
+				/*
+				 * Need to put previous task if sched class is changed
+				 */
+	                        put_prev_task(rq, prev);
+	                        p = pick_next_task_idle(rq);
+	                }
+	
+	                return p;
+	        }
+	restart:
+	        for_class_range(class, prev->sched_class, &idle_sched_class) {
+	                if (class->balance(rq, prev, rf))
+	                        break;
+	        }
+		/*
+		 * Need to put previous task if sched class is changed
+		 */
+	        put_prev_task(rq, prev);
+	        for_each_class(class) {
+	                p = class->pick_next_task(rq);
+	                if (p)
+	                        return p;
+	        }
+        }
