@@ -38,3 +38,10 @@ Then, tell grub to finish setting itself up properly against the drive on your P
 Create a new user with home folder and bash
 
 	sudo useradd --create-home --user-group --shell /bin/bash <username>
+
+## Cron tips
+Sync up timezone with localtime and restart cron service
+
+	ps -ef | grep cron
+	cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+	systemctl restart cron
