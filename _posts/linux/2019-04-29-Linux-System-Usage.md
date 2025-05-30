@@ -38,7 +38,7 @@ Then, tell grub to finish setting itself up properly against the drive on your P
 Create a new user with home folder and bash, and grant sudoer
 
 	sudo useradd --create-home --user-group --shell /bin/bash <username>
-	sudo usermod -aG sudo jumpcloud
+	sudo usermod -aG sudo aubrey
 
 ## Cron tips
 Sync up timezone with localtime and restart cron service
