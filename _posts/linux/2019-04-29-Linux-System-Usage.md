@@ -15,6 +15,9 @@ To enable GUI again issue the command:
 
 ---
 
+## Change hostname
+	sudo hostnamectl set-hostname alc-machine
+
 ## Fix up GRUB install
 Press C for the Grub command line, which will drop you back to a prompt:
 Now, enter these commands in sequence:
@@ -37,7 +40,7 @@ Then, tell grub to finish setting itself up properly against the drive on your P
 ## Add an account
 Create a new user with home folder and bash, and grant sudoer
 
-	sudo useradd --create-home --user-group --shell /bin/bash <username>
+	sudo useradd --create-home --user-group --shell /bin/bash aubrey
 	sudo usermod -aG sudo aubrey
 
 ## Cron tips
@@ -238,6 +241,9 @@ Sync up timezone with localtime and restart cron service
 ## GRUB2 enable debug message
 	set debug=all
 	grub-install --debug-image=all
+
+## Disable sleep/auto-suspend
+	sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 ## Download unsloth model (hf-mirror or modelscpoe)
 	git clone --no-checkout https://hf-mirror.com/unsloth/DeepSeek-R1-GGUF 
