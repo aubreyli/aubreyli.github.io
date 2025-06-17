@@ -247,8 +247,7 @@ Sync up timezone with localtime and restart cron service
 
 ## Download unsloth model (hf-mirror or modelscpoe)
 	git clone --no-checkout https://hf-mirror.com/unsloth/DeepSeek-R1-GGUF 
- Or
- 	GIT_LFS_SKIP_SMUDGE=1 git clone https://www.modelscope.cn/unsloth/DeepSeek-R1-0528-GGUF.git
+  	GIT_LFS_SKIP_SMUDGE=1 git clone https://www.modelscope.cn/unsloth/DeepSeek-R1-0528-GGUF.git
 	cd DeepSeek-R1-GGUF/
 	# 建议nohup执行, 预计至少需要半天时间, 同时确保磁盘容量足够400G.
  	git lfs pull --include="Q4_K_M/*.gguf"
