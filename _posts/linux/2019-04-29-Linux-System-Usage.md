@@ -251,3 +251,9 @@ Sync up timezone with localtime and restart cron service
 	cd DeepSeek-R1-GGUF/
 	# 建议nohup执行, 预计至少需要半天时间, 同时确保磁盘容量足够400G.
  	git lfs pull --include="Q4_K_M/*.gguf"
+
+## GRUB kernel debug option
+	GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=ttyS0,115200n8 maxcpus=192 modprobe.blacklist=iaa_crypto"
+    #GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=ttyS0,115200n8 initcall_debug earlyprintk=ttyS0,115200n8 debug ignore_loglevel nmi_watchdog=1 softlockup_panic=1 hardlockup_all_cpu_backtrace=1"
+
+  
